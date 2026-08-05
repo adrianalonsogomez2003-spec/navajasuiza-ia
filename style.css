@@ -1,0 +1,188 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================================================== */
+:root {
+    --fondo-oscuro: #0f172a;       /* Azul noche para el fondo general */
+    --fondo-tarjeta: #1e293b;      /* Azul grisáceo para las cajas */
+    --borde-tarjeta: #334155;      /* Color para las líneas de separación */
+    --texto-principal: #f8fafc;    /* Blanco roto para no cansar la vista */
+    --texto-secundario: #94a3b8;   /* Gris claro para las descripciones */
+    --color-acento: #00f2fe;       /* Azul neón brillante para títulos y enlaces */
+    --color-hover: #00c6ff;        /* Variación del azul neón para efectos */
+}
+
+/* El reseteo elimina los márgenes que los navegadores ponen por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--fondo-oscuro);
+    color: var(--texto-principal);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+/* ==========================================================================
+   2. ENCABEZADO (HERO SECTION)
+   ========================================================================== */
+.cabecera-principal {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px auto; /* Centra el bloque y añade espacio abajo */
+}
+
+.cabecera-principal h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+/* Truco visual: pintamos las dos últimas palabras de azul neón */
+.cabecera-principal h1::after {
+    content: " al Instante.";
+    color: var(--color-acento);
+}
+
+.cabecera-principal p {
+    font-size: 1.2rem;
+    color: var(--texto-secundario);
+}
+
+/* ==========================================================================
+   3. CONTENEDOR Y BLOQUES (ESTRUCTURA FLEXBOX)
+   ========================================================================== */
+.contenedor-soluciones {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Coloca un bloque debajo del otro */
+    gap: 30px;              /* Espacio de separación entre bloques */
+}
+
+/* Cada bloque se convierte en una fila flexible con esquinas redondeadas */
+.bloque-solacion {
+    background-color: var(--fondo-tarjeta);
+    border: 1px solid var(--borde-tarjeta);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;          /* Activa Flexbox dentro del bloque */
+    gap: 40px;              /* Separa la tarjeta problema de la herramienta */
+    align-items: center;    /* Centra verticalmente el contenido */
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efecto visual: cuando el usuario pasa el ratón sobre el bloque, este se ilumina */
+.bloque-solacion:hover {
+    transform: translateY(-5px); /* Eleva la tarjeta sutilmente */
+    border-color: var(--color-acento);
+}
+
+/* ==========================================================================
+   4. DETALLES INTERNOS DE LOS BLOQUES
+   ========================================================================== */
+
+/* Mitad izquierda: El Problema */
+.tarjeta-problema {
+    flex: 1; /* Ocupa exactamente el 50% del espacio del bloque */
+}
+
+.tarjeta-problema h2 {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.subtitulo-bloque {
+    font-size: 0.95rem;
+    color: var(--color-acento);
+    font-weight: 500;
+}
+
+/* Mitad derecha: La Solución */
+.tarjeta-herramienta {
+    flex: 1; /* Ocupa el otro 50% del espacio */
+    border-left: 2px solid var(--borde-tarjeta); /* Línea divisoria central */
+    padding-left: 40px;
+}
+
+.tarjeta-herramienta h3 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.tarjeta-herramienta p {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   5. BOTÓN DE ACCIÓN MODERNO
+   ========================================================================== */
+.boton-accion {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-acento), var(--color-hover));
+    color: #0f172a;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+}
+
+.boton-accion:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+}
+
+/* ==========================================================================
+   6. PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+.pie-pagina {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 20px;
+    border-top: 1px solid var(--borde-tarjeta);
+    color: var(--texto-secundario);
+    font-size: 0.85rem;
+}
+/* ==========================================================================
+   7. BARRA DE BÚSQUEDA INTERACTIVA
+   ========================================================================== */
+.contenedor-buscador {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#buscador {
+    width: 100%;
+    max-width: 500px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    background-color: var(--fondo-tarjeta);
+    border: 2px solid var(--borde-tarjeta);
+    border-radius: 30px; /* Bordes totalmente redondeados */
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto cuando el usuario hace clic dentro del buscador */
+#buscador:focus {
+    border-color: var(--color-acento);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+    max-width: 540px; /* Se ensancha sutilmente al activarse */
+}
